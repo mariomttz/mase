@@ -1,0 +1,164 @@
+:root {
+  --primary-blue: #2c3e50;
+  --accent-blue: #3498db;
+  --success-green: #27ae60;
+  --error-red: #e74c3c;
+  --text-dark: #2c3e50;
+  --text-light: #ecf0f1;
+  --gray-light: #bdc3c7;
+}
+
+.main-content {
+  max-width: 90%;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.download-guide {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.guide-title {
+  color: var(--primary-blue);
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.instructions {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.steps {
+  text-align: left;
+  display: inline-block;
+  padding-left: 1.5rem;
+}
+
+.download-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--gray-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form-control#date {
+  width: 95%;
+}
+
+.form-control:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+.download-button {
+  width: 100%;
+  padding: 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.download-button:hover {
+  transform: translateY(-2px);
+}
+
+.download-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.alerts-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateX(120%);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.alert-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.success-alert {
+  background: #d4edda;
+  border: 2px solid #28a745;
+  color: #155724;
+}
+
+.error-alert {
+  background: #f8d7da;
+  border: 2px solid #dc3545;
+  color: #721c24;
+}
+
+.alert:not(.hidden) {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 0 0.5rem;
+  }
+
+  .download-form {
+    padding: 1.5rem;
+  }
+
+  .guide-title {
+    font-size: 1.8rem;
+  }
+
+  .alerts-container {
+    width: 95%;
+    right: 2.5%;
+  }
+}

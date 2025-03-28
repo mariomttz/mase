@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Generic.astro";
+import "../styles/dataPage.css";
+---
+
+<Layout title="Datos" description="Lorem ipsum dolor sit amet" heroImage="">
+  <div class="main-content">
+    <div class="download-guide">
+      <div class="instructions">
+        <p>Sigue estos pasos para obtener los datos:</p>
+        <ol class="steps">
+          <li>Selecciona una estación.</li>
+          <li>Elige la fecha requerida.</li>
+          <li>Presiona el botón "descargar datos".</li>
+        </ol>
+      </div>
+    </div>
+
+    <form id="dataForm" class="download-form">
+      <div class="form-group">
+        <label for="station">Estación:</label>
+        <select id="station" name="station" required class="form-control">
+          <option value="" disabled selected>Selecciona una estación...</option>
+          <option value="01_AZUL">AZUL</option>
+          <option value="02_TAHU">TAHU</option>
+          <option value="03_PARE">PARE</option>
+          <option value="04_BARA">BARA</option>
+          <option value="05_NARA">NARA</option>
+          <option value="06_TOME">TOME</option>
+          <option value="07_HUIR">HUIR</option>
+          <option value="08_CONE">CONE</option>
+          <option value="09-PURU">PURU</option>
+          <option value="10_CRIS">CRIS</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Fecha de los datos:</label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          required
+          min="2023-06-01"
+          max={new Date().toISOString().split("T")[0]}
+          class="form-control"
+        />
+      </div>
+
+      <button type="submit" class="download-button">
+        <svg class="download-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+        </svg>
+        Descargar datos
+      </button>
+    </form>
+
+    <div class="alerts-container" aria-live="polite">
+      <div role="alert" class="alert success-alert hidden">
+        <svg class="alert-icon" viewBox="0 0 24 24">
+          <path
+            d="M20 12a8 8 0 11-16 0 8 8 0 0116 0zm-3.707-1.293a1 1 0 00-1.414-1.414L11 12.586 8.707 10.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l5-5z"
+          ></path>
+        </svg>
+        <p>¡Descarga completada exitosamente!</p>
+      </div>
+
+      <div role="alert" class="alert error-alert hidden">
+        <svg class="alert-icon" viewBox="0 0 24 24">
+          <path
+            d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          ></path>
+        </svg>
+        <p>Error en la descarga. Intente nuevamente.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/dataForm.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"
+  ></script>
+</Layout>

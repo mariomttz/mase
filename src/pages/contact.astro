@@ -1,0 +1,104 @@
+---
+import Layout from "../layouts/Generic.astro";
+---
+
+<Layout title="Contacto" description="Lorem ipsum dolor sit amet" heroImage="">
+  <div class="container">
+    <div class="content">
+      <!-- This form uses FabForm.io for submission -->
+
+      <form
+        action="https://fabform.io/f/xxxxx"
+        method="post"
+        class="form-container"
+      >
+        <div class="input-group">
+          <input id="name" type="text" placeholder="Nombre" />
+          <input id="email" type="email" placeholder="Correo electrónico" />
+        </div>
+        <input id="subject" type="text" placeholder="Asunto" />
+        <textarea id="message" rows="5" placeholder="Escribe tu mensaje…"
+        ></textarea>
+        <button type="submit">Enviar </button>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    h1 {
+      font-weight: 300;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .input-group input {
+      flex: 1;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</Layout>
