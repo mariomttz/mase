@@ -15,6 +15,6 @@
     "cally": "^0.8.0"
   },
   "devDependencies": {
-    "astro": "^5.3.1"
+    "astro": "^5.6.1"
   }
 }
