@@ -8,6 +8,18 @@
   --gray-light: #bdc3c7;
 }
 
+pre {
+  background-color: #333;    /* Dark background */
+  color: #fff;               /* White text */
+  padding: 10px;             /* Padding around the text */
+  border-radius: 5px;        /* Rounded corners */
+  overflow: auto;            /* Enable scroll for long code */
+}
+
+code {
+  font-family: monospace;    /* Use a monospace font */
+}
+
 .main-content {
   max-width: 90%;
   margin: 2rem auto;
