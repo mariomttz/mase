@@ -18,33 +18,29 @@ const handleDownload = async (stationValue, formattedDate) => {
   try {
     const [stationCode, stationName] = stationValue.split("_");
     
-    const components = ["BHE", "BHN", "BHZ"];
-    const zip = new JSZip();
-    let errorFlag = false;
-
-    for (const component of components) {
-      const filename = `${formattedDate}.MA.${stationName}.${component}.sac`;
-      const response = await fetch(`/home/datos/DatosCompartidos/MASE2.0/sac/${stationCode}_${stationName}/${filename}`);
-
-      if (!response.ok) {
-        errorFlag = true;
-        continue;
-      }
-      
-      const blob = await response.blob();
-      zip.file(filename, blob);
-    }
-
-    if (errorFlag) {
-      throw new Error("Algunos archivos no se encontraron");
-    }
-
-    const content = await zip.generateAsync({ type: "blob" });
-    const zipFilename = `${stationName}_${formattedDate}.zip`;
+    // Nuevo formato de nombre de archivo
+    const filename = `${formattedDate}.${stationName}.png`;
     
-    saveAs(content, zipFilename);
-    return true;
+    // Nueva ruta de descarga
+    const response = await fetch(`/png/${stationCode}_${stationName}/${filename}`);
 
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+
+    // Descarga directa del PNG
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    return true;
   } catch (error) {
     console.error("Error en la descarga:", error);
     showAlert("error");
@@ -63,8 +59,8 @@ form?.addEventListener("submit", async (e) => {
     return;
   }
 
-  const [year, month, day] = rawDate.split("-");
-  const formattedDate = `${year}${month.padStart(2, "0")}${day.padStart(2, "0")}000000`;
+  // Formatear fecha eliminando guiones
+  const formattedDate = rawDate.replace(/-/g, "") + "000000";
 
   try {
     const success = await handleDownload(stationValue, formattedDate);
